@@ -1,0 +1,10 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+   hostname: localhost
+  client:
+   register-with-eureka: false # so it can't connect with itself, allow other servers to connect 
+   fetch-registry: false
+     
