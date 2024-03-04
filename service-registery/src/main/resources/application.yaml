@@ -1,10 +1,18 @@
-server:
-  port: 8761
-
+#server:
+#  port: 8761
+#
+#eureka:
+#  instance:
+#   hostname: localhost
+#  client:
+#   register-with-eureka: false # so it can't connect with itself, allow other servers to connect 
+#   fetch-registry: false
+#     
 eureka:
-  instance:
-   hostname: localhost
-  client:
-   register-with-eureka: false # so it can't connect with itself, allow other servers to connect 
-   fetch-registry: false
-     
+   instance:
+      hostname: localhost
+   client:
+      registerWithEureka: false
+      fetchRegistry: false
+server:
+   port: 8761
