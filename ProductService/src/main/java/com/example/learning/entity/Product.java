@@ -27,7 +27,7 @@ public class Product {
 	@Column(name = "price")
 	private String price;
 	@Column(name = "quantity")
-	private String quantity;
+	private long quantity;
 
 	public long getProductId() {
 		return productId;
@@ -53,12 +53,5 @@ public class Product {
 		this.price = price;
 	}
 
-	public String getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
-	}
-
+	
 }
