@@ -2,6 +2,7 @@ package com.example.learning.orderservice.external.decoder;
 
 import java.io.IOException;
 
+import com.example.learning.orderservice.exception.OrderServiceCustomException;
 import com.example.learning.orderservice.external.response.ErrorResponse;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -24,18 +25,17 @@ public class CustomErrorDecoder implements ErrorDecoder{
 		
 		try {
 			ErrorResponse errorResponse = mapper.readValue(response.body().asInputStream(),ErrorResponse.class);
+			return new OrderServiceCustomException(errorResponse.getErrorMessage(),errorResponse.getCode());
 		} catch (StreamReadException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return new OrderServiceCustomException("INTERNAL SERVER ERROR", "500");
 		} catch (DatabindException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return new OrderServiceCustomException("INTERNAL SERVER ERROR", "500");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return new OrderServiceCustomException("INTERNAL SERVER ERROR", "500");
 		}
-		
-		return null;
 	}
 
 	
