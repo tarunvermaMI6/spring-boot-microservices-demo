@@ -1,6 +1,7 @@
 package com.example.paymentservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,8 @@ public class PaymentController {
 	@PostMapping
 	public ResponseEntity<Long> doPayment(@RequestBody PaymentRequest paymentRequest ){
 		
-		
+		long id = paymentService.doPayment(paymentRequest);
+		return new ResponseEntity<>(id,HttpStatus.OK);
 	}
 	
 }

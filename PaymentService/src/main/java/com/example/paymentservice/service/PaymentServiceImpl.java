@@ -1,5 +1,8 @@
 package com.example.paymentservice.service;
 
+import java.time.Instant;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +24,14 @@ public class PaymentServiceImpl implements PaymentService{
 		
 		log.info("Recording paymnet Details :: "+paymentRequest);
 		
-		TransactionDetails transactionDetails = TransactionDetails.builder().build(); 
-		
-		return 0;
+		TransactionDetails transactionDetails = TransactionDetails.builder()
+				.paymentDate(new Date()).amount(paymentRequest.getAmount())
+				.paymentMode(paymentRequest.getPaymentMode()+"").paymentStatus("SUCCESS")
+				.orderId(paymentRequest.getOrderId())
+				.build(); 
+		transactionDetails = transactionDetailsRepository.save(transactionDetails);
+		log.info("Transaction Completed for Id :: "+transactionDetails.getId());
+		return transactionDetails.getId();
 	}
 
 }
