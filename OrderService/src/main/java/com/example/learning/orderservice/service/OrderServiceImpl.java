@@ -1,6 +1,7 @@
 package com.example.learning.orderservice.service;
 
 import java.time.Instant;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -8,11 +9,11 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.learning.orderservice.entity.Order;
 import com.example.learning.orderservice.external.client.PaymentService;
-import com.example.learning.orderservice.external.client.ProductResponse;
 import com.example.learning.orderservice.external.client.ProductService;
 import com.example.learning.orderservice.external.request.PaymentRequest;
 import com.example.learning.orderservice.model.OrderRequest;
 import com.example.learning.orderservice.repostitory.OrderRepository;
+
 import lombok.extern.log4j.Log4j2;
 
 @Service
